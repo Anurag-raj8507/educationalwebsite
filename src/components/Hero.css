@@ -1,0 +1,72 @@
+/* src/components/Hero.css */
+.hero-container {
+  width: 2170px;
+  height: 300px;
+  position: relative;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.hero-slider {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 30px;
+  color: white;
+  background: none; /* Removed black overlay */
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  padding: 0;
+}
+
+.arrow.left {
+  left: 10px;
+}
+
+.arrow.right {
+  right: 10px;
+}
+
+
+.hero-content {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+.hero-content h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.get-started-btn {
+  padding: 8px 20px;
+  background-color: #00aaff;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.get-started-btn:hover {
+  background-color: #0077cc;
+}
