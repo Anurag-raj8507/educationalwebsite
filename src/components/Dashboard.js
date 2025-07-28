@@ -1,8 +1,14 @@
+import React from "react";
+import Courses from "../components/Courses";
+import AboutUs from "./AboutUs";
+import WhyChooseUs from "./WhyChooseUs";
 const Dashboard = () => {
   return (
     <section className="section">
       <h2>Welcome to your Dashboard</h2>
-      <p>You have successfully logged in.</p>
+      <WhyChooseUs/>
+      <Courses/>
+      <AboutUs/>
     </section>
   );
 };

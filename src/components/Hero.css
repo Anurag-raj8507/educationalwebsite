@@ -1,7 +1,7 @@
 /* src/components/Hero.css */
 .hero-container {
-  width: 2170px;
-  height: 300px;
+  width: 1520px;
+  height: 350px;
   position: relative;
   margin: auto;
   overflow: hidden;
@@ -9,14 +9,14 @@
 }
 
 .hero-slider {
-  width: 100%;
-  height: 100%;
+  width: 1520px;
+  height: 350px;
   position: relative;
 }
 
 .hero-image {
-  width: 100%;
-  height: 100%;
+  width: 1520px;
+  height: 350px;
   object-fit: cover;
   transition: opacity 0.5s ease-in-out;
 }
@@ -25,7 +25,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 30px;
+  font-size: 40px;
   color: white;
   background: none; /* Removed black overlay */
   border: none;
@@ -35,11 +35,11 @@
 }
 
 .arrow.left {
-  left: 10px;
+  left: 50px;
 }
 
 .arrow.right {
-  right: 10px;
+  right: 50px;
 }
 
 
@@ -69,4 +69,57 @@
 
 .get-started-btn:hover {
   background-color: #0077cc;
+}
+@media screen and (max-width: 768px) {
+  .hero-container,
+  .hero-slider
+   {
+    width: 100%;              /* Make it responsive */
+    height: 150px;             /* Adjust height automatically */
+    border-radius: 8px;       /* Optional: Slightly smaller radius */
+  }
+
+  .hero-image {
+    object-fit: cover;        /* Keeps aspect ratio */
+    height: 150px;
+    width: 100%;
+  }
+  .hero-content h2{
+    font-size: 15px;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .hero-container,
+  .hero-slider,
+  .hero-image {
+    width: 100%;              /* Make it responsive */
+    height: 150px;             /* Adjust height automatically */
+    border-radius: 8px;       /* Optional: Slightly smaller radius */
+  }
+
+  .hero-image {
+    object-fit: cover;        /* Keeps aspect ratio */
+    height: 150px;
+  }
+  .hero-content h2{
+    font-size: 15px;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .hero-container,
+  .hero-slider
+   {
+    width: 100%;              /* Make it responsive */
+    height: 350px;             /* Adjust height automatically */
+    border-radius: 8px;       /* Optional: Slightly smaller radius */
+  }
+
+  .hero-image {
+    object-fit: cover;        /* Keeps aspect ratio */
+    height: 350px;
+    width: 100%;
+  }
+  .hero-content h2{
+    font-size: 15px;
+  }
 }

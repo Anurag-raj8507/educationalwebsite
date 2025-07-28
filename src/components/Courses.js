@@ -1,10 +1,11 @@
 import { useState } from 'react';
 
-const CourseCard = ({ title, shortDesc, fullDesc }) => {
+const CourseCard = ({ title, image , shortDesc, fullDesc }) => {
   const [expanded, setExpanded] = useState(false);
 
   return (
     <div className="card">
+      <img src={image} alt={title} className="course-image" />
       <h3>{title}</h3>
       <p>
         {expanded ? fullDesc : shortDesc}
@@ -28,31 +29,37 @@ const Courses = () => {
       <div className="cards">
         <CourseCard
           title="Web Development"
+          image="/images/flexible.jpg"
           shortDesc="Master HTML, CSS, JavaScript, and modern frameworks."
           fullDesc="Master HTML, CSS, JavaScript, React, Node.js and build complete full-stack applications from scratch. Suitable for beginners and intermediate learners."
         />
         <CourseCard
-          title="Data Science"
+          title="Data Analyst"
+          image="/images/Data-Analyst.jpg"
           shortDesc="Learn Python, machine learning, and AI tools."
           fullDesc="Dive deep into Python programming, statistics, machine learning, and data visualization. Perfect for those aiming at careers in analytics and data engineering."
         />
         <CourseCard
           title="Digital Marketing"
+          image="/images/digital.webp"
           shortDesc="Grow your business through SEO and social media."
           fullDesc="Learn SEO, Google Ads, Social Media Marketing, Content Strategy, and Email Automation to become a full-fledged digital marketer."
         />
         <CourseCard
           title="Sainik Exam Preparation"
+          image="/images/sainik2.jpg"
           shortDesc="Prepare for Sainik School entrance with expert help."
           fullDesc="Covers Mathematics, Intelligence Test, and Language Test. Mock exams and interview training included for Class 6 and Class 9 Sainik entrance."
         />
         <CourseCard
           title="Olympiad Exams"
+          image="/images/olympiad.jpg"
           shortDesc="Train for Maths and Science Olympiads."
           fullDesc="Extensive practice for NSO, IMO, and other national/international Olympiads with topic-wise quizzes and previous year paper discussions."
         />
         <CourseCard
           title="Navodaya Entrance"
+          image="/images/navodaya2.webp"
           shortDesc="Crack the Navodaya Vidyalaya entrance exam."
           fullDesc="Includes study material for mental ability, arithmetic, and language. Ideal for Class 5 students targeting JNVST with structured revision plans."
         />

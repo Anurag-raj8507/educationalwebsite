@@ -17,9 +17,9 @@ import './Hero.css';
 const images = [
   '/images/course1.jpg',
   '/images/course2.jpg',
-  '/images/image3.jpg',
-  '/images/image4.jpg',
-  '/images/image5.jpg',
+  '/images/olympiad2.jpg',
+  '/images/sainik.png',
+  '/images/navodaya.png',
 ];
 
 const Hero = () => {
@@ -28,7 +28,7 @@ const Hero = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % images.length);
-    }, 10000); // 10 seconds
+    }, 3000); // 10 seconds
     return () => clearInterval(interval);
   }, []);
 
@@ -49,11 +49,11 @@ const Hero = () => {
     <div className="hero-container">
       <div className="hero-slider">
         <img src={images[current]} alt={`slide-${current}`} className="hero-image" />
-        <button className="arrow left" onClick={goToPrev}>&lt;</button>
-        <button className="arrow right" onClick={goToNext}>&gt;</button>
+        <button className="arrow left" onClick={goToNext}>&lt;</button>
+        <button className="arrow right" onClick={goToPrev}>&gt;</button>
       </div>
       <div className="hero-content">
-        <h2>Unlock Your Potential</h2>
+        <h2>Unlock Your Learning Potential</h2>
         <button className="get-started-btn" onClick={scrollToCourses}>Get Started</button>
       </div>
     </div>
