@@ -18,6 +18,7 @@ import {
   FaPhoneAlt,
   FaEnvelope,
   FaMapMarkerAlt,
+  FaWhatsapp,
 } from "react-icons/fa";
 
 const Footer = () => {
@@ -51,6 +52,7 @@ const Footer = () => {
             <a href="https://twitter.com" target="_blank" rel="noreferrer"><FaTwitter /></a>
             <a href="https://www.instagram.com/anuragraj_2508?igsh=MWhsOG4wdHZzNXlmbg==" target="_blank" rel="noreferrer"><FaInstagram /></a>
             <a href="https://www.linkedin.com/in/anurag-raj-370929277/" target="_blank" rel="noreferrer"><FaLinkedinIn /></a>
+            <a href="https://wa.me/9955128105?text=Hello" target="_blank" rel="noreferrer"><FaWhatsapp /></a>
           </div>
         </div>
       </div>

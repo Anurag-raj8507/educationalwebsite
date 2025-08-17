@@ -1,4 +1,3 @@
-/* src/components/Hero.css */
 .hero-container {
   width: 1520px;
   height: 350px;
@@ -46,15 +45,19 @@
 .hero-content {
   position: absolute;
   bottom: 10px;
-  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  /* width: 100%; */
   text-align: center;
   color: white;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
 }
 
 .hero-content h2 {
-  font-size: 24px;
   margin-bottom: 10px;
+  color: #e3f309;
+  background-color: black;
+  padding: 5px 10px;
 }
 
 .get-started-btn {
@@ -70,6 +73,7 @@
 .get-started-btn:hover {
   background-color: #0077cc;
 }
+
 @media screen and (max-width: 768px) {
   .hero-container,
   .hero-slider
@@ -85,8 +89,18 @@
     width: 100%;
   }
   .hero-content h2{
-    font-size: 15px;
+    font-size: 11px;
+    color: #00aaff;
   }
+  .get-started-btn {
+  padding: 8px 10px;
+  background-color: #00aaff;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
 }
 @media screen and (min-width: 769px) and (max-width: 1024px) {
   .hero-container,

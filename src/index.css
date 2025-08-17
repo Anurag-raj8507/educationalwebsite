@@ -53,7 +53,45 @@ nav a:hover {
   align-items: center;
   gap: 10px;
 }
+/* Hamburger menu button (hidden on desktop) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #333;
+  border-radius: 2px;
+} 
 
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: #fff;
+    /* position: absolute; */
+    right: 0;
+    top: 50px;
+    width: 120px;
+    font-weight: 700;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+}
 .logo {
   width: 70px;
   height: 70px;
@@ -61,7 +99,7 @@ nav a:hover {
 }
 
 .section {
-  padding: 60px 20px;
+  padding: 40px 20px;
   background-color: white;
 }
 
@@ -77,15 +115,16 @@ nav a:hover {
   /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
   gap: 30px;
   justify-content: center;
-  text-align: center;
+  /* text-align: center; */
   flex-wrap: wrap;
+  position: relative;
   /* padding: 0 30px; */
 }
 
 .card {
   border: 1px solid #ddd;
   padding: 20px;
-  width: 280px;
+  width: 380px;
   border-radius: 8px;
   background-color: #fafafa;
   transition: transform 0.3s;
@@ -177,7 +216,7 @@ nav a:hover {
   line-height: 30px;
  }
  .pic{
-  width: 350px;
+  /* width: 350px; */
   height: 300px;
   /* object-fit: cover; */
   float: right;
@@ -204,6 +243,51 @@ input {
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
+} 
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 20px;
+}
+
+@media (max-width: 1024px) {
+  .video-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 cards on tablets */
+  }
+}
+
+@media (max-width: 600px) {
+  .video-grid {
+    grid-template-columns: 1fr; /* 1 card on mobile */
+  }
+}
+.popular-videos{
+  margin-top: 100px;
+}
+.popular-videos h2{
+  color: #0077cc;
+}
+
+.video-card {
+  background: #f5f5f5;
+  padding: 15px;
+  border-radius: 10px;
+  width: 420px;
+}
+/* For devices max width 768px (tablet & mobile) */
+@media (max-width: 768px) {
+  .video-card {
+    width: 310px; /* take full width of column */
+  }
+}
+
+/* For devices min width 769px (laptop & desktop) */
+@media (min-width: 769px) {
+  .video-card {
+    width: 420px; /* keep fixed width on larger screens */
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -215,11 +299,11 @@ input {
   }
 
   nav h1 {
-    font-size: 12px;
+    font-size: 18px;
     margin-bottom: 10px;
   }
 .logo{
-  width: 25px;
+  width: 50px;
   height: auto;
 }
 .nav-left{
@@ -240,14 +324,13 @@ input {
   nav a {
     display: block;
   }
-
+.pic{
+  width: 150px;
+  height: auto;
+}
   .about{
     font-size: 15px;
   }
-  /* .pic{
-    width: 90px;
-    height: auto;
-  } */
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {

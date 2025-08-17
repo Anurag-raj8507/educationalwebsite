@@ -386,33 +386,6 @@
 
 // export default Register;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // import React, { useState } from 'react';
 
 // const Register = () => {
@@ -491,6 +464,9 @@
 
 // export default Register;
 
+
+// finally working code h iske niche wala
+
 // import { useState } from 'react';
 // import { useNavigate } from 'react-router-dom';
 
@@ -527,29 +503,6 @@
 //     }
 //   };
 
-//   // Function to check if email already exists
-//   const checkEmailExists = async (email) => {
-//     try {
-//       const response = await fetch("https://script.google.com/macros/s/AKfycbz0_hwJXvt2onuNrC00p2MpmELTCU6jgKBQi8q67S1lWf6xtloXdXlC1bWVbWAcJzxtxQ/exec", {
-//         method: "POST",
-//         redirect: "follow",
-//         headers: {
-//           "Content-Type": "application/x-www-form-urlencoded",
-//         },
-//         body: new URLSearchParams({
-//           type: "checkEmail",
-//           email: email,
-//         }),
-//       });
-
-//       const result = await response.text();
-//       return result === "EXISTS";
-//     } catch (error) {
-//       console.error("Error checking email:", error);
-//       return false;
-//     }
-//   };
-
 //   const handleSubmit = async (e) => {
 //     e.preventDefault();
     
@@ -561,74 +514,48 @@
 //     setIsLoading(true);
 
 //     try {
-//       // First, check if email already exists
-//       const emailExists = await checkEmailExists(email);
-      
-//       if (emailExists) {
-//         alert("You are already registered! Please login.");
-//         navigate("/login");
-//         setIsLoading(false);
-//         return;
-//       }
+//       // Create form data
+//       const formData = new FormData();
+//       formData.append('type', 'register');
+//       formData.append('name', username);
+//       formData.append('email', email);
+//       formData.append('phone', phone);
+//       formData.append('dob', dob);
+//       formData.append('state', state);
+//       formData.append('city', city);
+//       formData.append('password', password);
 
-//       // Proceed with registration
-//       const response = await fetch("https://script.google.com/macros/s/AKfycbz0_hwJXvt2onuNrC00p2MpmELTCU6jgKBQi8q67S1lWf6xtloXdXlC1bWVbWAcJzxtxQ/exec", {
+//       const response = await fetch("https://script.google.com/macros/s/AKfycbxokyMXKzm9p6qEhlws-3WBwBb0ah31kkZPZ-0jWIpDH1pUOjKXWExndMoVrtmXriyW/exec", {
 //         method: "POST",
-//         redirect: "follow",
-//         headers: {
-//           "Content-Type": "application/x-www-form-urlencoded",
-//         },
-//         body: new URLSearchParams({
-//           type: "register",
-//           name: username,
-//           email: email,
-//           phone,
-//           dob,
-//           state,
-//           city,
-//           password,
-//         }),
+//         mode: 'no-cors', // This handles CORS
+//         body: formData
 //       });
 
-//       const result = await response.text();
+//       // Since we're using no-cors, we can't read the response
+//       // We'll assume success and let the server handle duplicate checking
+//       // The server should return appropriate responses
       
-//       if (result === "EMAIL_EXISTS") {
-//         alert("You are already registered! Please login.");
+//       // For no-cors mode, we need to handle this differently
+//       // You might want to add a setTimeout to simulate response time
+//       setTimeout(() => {
+//         alert("Registration request submitted! If the email is already registered, you'll be redirected to login.");
+//         // You might want to redirect based on server logic or handle it differently
 //         navigate("/login");
-//         setIsLoading(false);
-//         return;
-//       } else if (result === "Success") {
-//         alert("Registration successful!");
-//       } else {
-//         alert("Registration failed! Please try again.");
-//         setIsLoading(false);
-//         return;
-//       }
-      
-//       // Clear form
-//       setUsername('');
-//       setEmail('');
-//       setPhone('');
-//       setDob('');
-//       setState('');
-//       setCity('');
-//       setPassword('');
-      
-//       navigate("/login");
+//       }, 2000);
 
 //     } catch (error) {
 //       console.error("Error:", error);
 //       alert("Registration error. Please try again.");
+//     } finally {
+//       setIsLoading(false);
 //     }
-    
-//     setIsLoading(false);
 //   };
 
 //   return (
-//     <section id ="register" className="section">
+//     <section className="section2">
 //       <h2>Register</h2>
-//       <div className="cards">
-//         <div className="card">
+//       <div className="cards2">
+//         <div className="card2">
 //           <form onSubmit={handleSubmit}>
 //             <div>
 //               <label>Username:</label><br />
@@ -636,7 +563,7 @@
 //                 type="text" 
 //                 placeholder="Enter Username" 
 //                 value={username} 
-//                 onChange={(e) => setUsername(e.target.value)}
+//                 onChange={(e) => setUsername(e.target.value)} 
 //                 disabled={isLoading}
 //               />
 //             </div><br />
@@ -647,7 +574,7 @@
 //                 type="email" 
 //                 placeholder="Enter Email" 
 //                 value={email} 
-//                 onChange={(e) => setEmail(e.target.value)}
+//                 onChange={(e) => setEmail(e.target.value)} 
 //                 disabled={isLoading}
 //               />
 //             </div><br />
@@ -659,7 +586,7 @@
 //                 maxLength="10" 
 //                 placeholder="Enter 10-digit Phone Number" 
 //                 value={phone} 
-//                 onChange={handlePhoneInput}
+//                 onChange={handlePhoneInput} 
 //                 disabled={isLoading}
 //               />
 //             </div><br />
@@ -669,7 +596,7 @@
 //               <input 
 //                 type="date" 
 //                 value={dob} 
-//                 onChange={(e) => setDob(e.target.value)}
+//                 onChange={(e) => setDob(e.target.value)} 
 //                 disabled={isLoading}
 //               />
 //             </div><br />
@@ -681,7 +608,7 @@
 //                 onChange={(e) => {
 //                   setState(e.target.value);
 //                   setCity('');
-//                 }}
+//                 }} 
 //                 disabled={isLoading}
 //               >
 //                 <option value="">Select State</option>
@@ -729,405 +656,27 @@
 //             </div><br />
 
 //             <button type="submit" disabled={isLoading}>
-//               {isLoading ? 'Processing...' : 'Register'}
-//             </button>
-//           </form>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default Register;
-
-// import { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
-
-// const Register = () => {
-//   const [showPassword, setShowPassword] = useState(false);
-//   const [username, setUsername] = useState('');
-//   const [email, setEmail] = useState('');
-//   const [phone, setPhone] = useState('');
-//   const [dob, setDob] = useState('');
-//   const [state, setState] = useState('');
-//   const [city, setCity] = useState('');
-//   const [password, setPassword] = useState('');
-//   const [isLoading, setIsLoading] = useState(false);
-
-//   const navigate = useNavigate();
-
-//   // State and city options
-//   const stateCityMap = {
-//     "Bihar": ["Patna", "Gaya", "Muzaffarpur", "Bhagalpur", "Purnia", "Darbhanga", "Motihari", "Sasaram", "Arrah"],
-//     "Maharashtra": ["Mumbai", "Pune", "Nagpur"],
-//     "Uttar Pradesh": ["Lucknow", "Kanpur", "Varanasi"],
-//     "Delhi": ["New Delhi"],
-//     "Karnataka": ["Bengaluru", "Mysuru"]
-//   };
-
-//   const togglePassword = () => {
-//     setShowPassword(prev => !prev);
-//   };
-
-//   const handlePhoneInput = (e) => {
-//     const value = e.target.value.replace(/\D/g, '');
-//     if (value.length <= 10) {
-//       setPhone(value);
-//     }
-//   };
-
-//   // JSONP method to get response from Apps Script
-//   const submitWithJSONP = (formData) => {
-//     return new Promise((resolve, reject) => {
-//       const callbackName = 'registerCallback_' + Date.now();
-//       const script = document.createElement('script');
-      
-//       // Set up callback function
-//       window[callbackName] = (response) => {
-//         document.head.removeChild(script);
-//         delete window[callbackName];
-//         resolve(response);
-//       };
-
-//       // Create script URL with callback parameter
-//       const params = new URLSearchParams({
-//         ...formData,
-//         callback: callbackName
-//       });
-      
-//       script.src = `https://script.google.com/macros/s/AKfycbymC8F767X7bShl9xnfWaVK-Ak7AbudT8MkxhatAilTfLFt6P_WGJ5EVn1KjOGnBtUKQg/exec?${params}`;
-//       script.onerror = () => {
-//         document.head.removeChild(script);
-//         delete window[callbackName];
-//         reject(new Error('JSONP request failed'));
-//       };
-
-//       document.head.appendChild(script);
-      
-//       // Timeout after 15 seconds
-//       setTimeout(() => {
-//         if (window[callbackName]) {
-//           document.head.removeChild(script);
-//           delete window[callbackName];
-//           reject(new Error('Request timeout'));
-//         }
-//       }, 15000);
-//     });
-//   };
-
-//   // Alternative method using popup window
-//   const submitWithPopup = (formData) => {
-//     return new Promise((resolve, reject) => {
-//       const form = document.createElement('form');
-//       form.method = 'POST';
-//       form.action = 'https://script.google.com/macros/s/AKfycbymC8F767X7bShl9xnfWaVK-Ak7AbudT8MkxhatAilTfLFt6P_WGJ5EVn1KjOGnBtUKQg/exec';
-//       form.target = 'registration_popup';
-//       form.style.display = 'none';
-
-//       Object.keys(formData).forEach(key => {
-//         const input = document.createElement('input');
-//         input.type = 'hidden';
-//         input.name = key;
-//         input.value = formData[key];
-//         form.appendChild(input);
-//       });
-
-//       // Open popup window
-//       const popup = window.open('', 'registration_popup', 'width=600,height=400,scrollbars=yes,resizable=yes');
-      
-//       if (!popup) {
-//         reject(new Error('Popup blocked. Please allow popups for this site.'));
-//         return;
-//       }
-
-//       document.body.appendChild(form);
-//       form.submit();
-//       document.body.removeChild(form);
-
-//       // Monitor popup for response
-//       const checkPopup = setInterval(() => {
-//         try {
-//           if (popup.closed) {
-//             clearInterval(checkPopup);
-//             // Since we can't read the response directly, we'll ask user to confirm
-//             const userResponse = window.confirm(
-//               'Registration submitted! Did you see a "SUCCESS" message in the popup?\n\n' +
-//               'Click OK if registration was successful, or Cancel if there was an error.'
-//             );
-            
-//             if (userResponse) {
-//               resolve('SUCCESS');
-//             } else {
-//               resolve('ERROR');
-//             }
-//           }
-//         } catch (e) {
-//           // Popup still open or cross-origin issue
-//         }
-//       }, 1000);
-
-//       // Auto-close after 30 seconds
-//       setTimeout(() => {
-//         if (!popup.closed) {
-//           popup.close();
-//           clearInterval(checkPopup);
-//           resolve('TIMEOUT');
-//         }
-//       }, 30000);
-//     });
-//   };
-
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-    
-//     if (!username || !email || !phone || !dob || !password || !state || !city) {
-//       alert("Please fill in all fields.");
-//       return;
-//     }
-
-//     if (phone.length !== 10) {
-//       alert("Phone number must be exactly 10 digits.");
-//       return;
-//     }
-
-//     if (password.length < 6) {
-//       alert("Password must be at least 6 characters.");
-//       return;
-//     }
-
-//     setIsLoading(true);
-
-//     const formData = {
-//       type: "register",
-//       name: username,
-//       email: email,
-//       phone: phone,
-//       dob: dob,
-//       state: state,
-//       city: city,
-//       password: password,
-//     };
-
-//     try {
-//       // First try JSONP method
-//       try {
-//         const response = await submitWithJSONP(formData);
-//         handleRegistrationResponse(response);
-//         return;
-//       } catch (jsonpError) {
-//         console.log('JSONP failed, trying popup method:', jsonpError);
-//       }
-
-//       // Fallback to popup method
-//       const response = await submitWithPopup(formData);
-//       handleRegistrationResponse(response);
-
-//     } catch (error) {
-//       console.error('Registration error:', error);
-      
-//       // Final fallback - direct navigation to Apps Script
-//       if (window.confirm('Unable to process registration automatically. Would you like to open the registration form in a new tab?')) {
-//         const form = document.createElement('form');
-//         form.method = 'POST';
-//         form.action = 'https://script.google.com/macros/s/AKfycbymC8F767X7bShl9xnfWaVK-Ak7AbudT8MkxhatAilTfLFt6P_WGJ5EVn1KjOGnBtUKQg/exec';
-//         form.target = '_blank';
-//         form.style.display = 'none';
-
-//         Object.keys(formData).forEach(key => {
-//           const input = document.createElement('input');
-//           input.type = 'hidden';
-//           input.name = key;
-//           input.value = formData[key];
-//           form.appendChild(input);
-//         });
-
-//         document.body.appendChild(form);
-//         form.submit();
-//         document.body.removeChild(form);
-
-//         alert('Registration form opened in new tab. Please check the result and return to login if successful.');
-//       }
-//     } finally {
-//       setIsLoading(false);
-//     }
-//   };
-
-//   const handleRegistrationResponse = (response) => {
-//     console.log('Registration Response:', response);
-    
-//     if (response === 'SUCCESS') {
-//       alert("Registration successful!");
-//       // Clear form
-//       setUsername('');
-//       setEmail('');
-//       setPhone('');
-//       setDob('');
-//       setState('');
-//       setCity('');
-//       setPassword('');
-//       navigate("/login");
-//     } else if (response === 'EMAIL_EXISTS') {
-//       alert("This email is already registered! Please login instead.");
-//       navigate("/login");
-//     } else if (response === 'ERROR' || response === 'TIMEOUT') {
-//       alert("Registration may have failed. Please check your Google Sheet and try again if needed.");
-//     } else if (typeof response === 'string' && response.startsWith('ERROR:')) {
-//       alert("Registration failed: " + response);
-//     } else {
-//       alert("Registration completed. Please check your Google Sheet to verify the data was saved.");
-//       navigate("/login");
-//     }
-//   };
-
-//   return (
-//     <section className="section">
-//       <h2>Register</h2>
-//       <div className="cards">
-//         <div className="card">
-//           <form onSubmit={handleSubmit}>
-//             <div>
-//               <label>Username:</label><br />
-//               <input 
-//                 type="text" 
-//                 placeholder="Enter Username" 
-//                 value={username} 
-//                 onChange={(e) => setUsername(e.target.value)}
-//                 disabled={isLoading}
-//                 required
-//               />
-//             </div><br />
-
-//             <div>
-//               <label>Email:</label><br />
-//               <input 
-//                 type="email" 
-//                 placeholder="Enter Email" 
-//                 value={email} 
-//                 onChange={(e) => setEmail(e.target.value)}
-//                 disabled={isLoading}
-//                 required
-//               />
-//             </div><br />
-
-//             <div>
-//               <label>Phone Number:</label><br />
-//               <input 
-//                 type="text" 
-//                 maxLength="10" 
-//                 placeholder="Enter 10-digit Phone Number" 
-//                 value={phone} 
-//                 onChange={handlePhoneInput}
-//                 disabled={isLoading}
-//                 required
-//               />
-//               {phone && phone.length !== 10 && (
-//                 <small style={{color: 'red'}}>Phone number must be 10 digits</small>
-//               )}
-//             </div><br />
-
-//             <div>
-//               <label>Date of Birth:</label><br />
-//               <input 
-//                 type="date" 
-//                 value={dob} 
-//                 onChange={(e) => setDob(e.target.value)}
-//                 disabled={isLoading}
-//                 required
-//                 max={new Date().toISOString().split('T')[0]}
-//               />
-//             </div><br />
-
-//             <div>
-//               <label>State:</label><br />
-//               <select 
-//                 value={state} 
-//                 onChange={(e) => {
-//                   setState(e.target.value);
-//                   setCity('');
-//                 }}
-//                 disabled={isLoading}
-//                 required
-//               >
-//                 <option value="">Select State</option>
-//                 {Object.keys(stateCityMap).map((s) => (
-//                   <option key={s} value={s}>{s}</option>
-//                 ))}
-//               </select>
-//             </div><br />
-
-//             <div>
-//               <label>City:</label><br />
-//               <select 
-//                 value={city} 
-//                 onChange={(e) => setCity(e.target.value)} 
-//                 disabled={!state || isLoading}
-//                 required
-//               >
-//                 <option value="">{state ? "Select City" : "Select State first"}</option>
-//                 {state && stateCityMap[state].map((c) => (
-//                   <option key={c} value={c}>{c}</option>
-//                 ))}
-//               </select>
-//             </div><br />
-
-//             <div style={{ position: 'relative' }}>
-//               <label>Password:</label><br />
-//               <input
-//                 type={showPassword ? 'text' : 'password'}
-//                 placeholder="Enter Password (min 6 characters)"
-//                 value={password}
-//                 onChange={(e) => setPassword(e.target.value)}
-//                 disabled={isLoading}
-//                 required
-//                 minLength="6"
-//               />
-//               <span
-//                 onClick={togglePassword}
-//                 style={{
-//                   position: 'absolute',
-//                   right: 10,
-//                   top: 38,
-//                   cursor: 'pointer',
-//                   userSelect: 'none'
-//                 }}
-//               >
-//                 {showPassword ? '👁️' : '👁️‍🗨️'}
-//               </span>
-//               {password && password.length < 6 && (
-//                 <small style={{color: 'red', display: 'block'}}>Password must be at least 6 characters</small>
-//               )}
-//             </div><br />
-
-//             <button 
-//               type="submit" 
-//               disabled={isLoading || phone.length !== 10 || password.length < 6}
-//               style={{
-//                 opacity: (isLoading || phone.length !== 10 || password.length < 6) ? 0.6 : 1,
-//                 cursor: (isLoading || phone.length !== 10 || password.length < 6) ? 'not-allowed' : 'pointer'
-//               }}
-//             >
 //               {isLoading ? 'Registering...' : 'Register'}
 //             </button>
-            
-//             <div style={{ marginTop: '10px', textAlign: 'center' }}>
-//               Already have an account? 
+//           </form>
+
+//           <div style={{ marginTop: '20px', textAlign: 'center' }}>
+//             <p>Already have an account? 
 //               <button 
 //                 type="button" 
-//                 onClick={() => navigate("/login")}
+//                 onClick={() => navigate('/login')}
 //                 style={{ 
 //                   background: 'none', 
 //                   border: 'none', 
 //                   color: 'blue', 
 //                   textDecoration: 'underline', 
-//                   cursor: 'pointer',
-//                   marginLeft: '5px'
+//                   cursor: 'pointer' 
 //                 }}
-//                 disabled={isLoading}
 //               >
 //                 Login here
 //               </button>
-//             </div>
-//           </form>
+//             </p>
+//           </div>
 //         </div>
 //       </div>
 //     </section>
@@ -1149,26 +698,104 @@ const Register = () => {
   const [city, setCity] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [emailError, setEmailError] = useState('');
+  const [phoneError, setPhoneError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
 
   const navigate = useNavigate();
 
   // State and city options
   const stateCityMap = {
-    "Bihar": ["Patna", "Gaya", "Muzaffarpur", "Bhagalpur", "Purnia", "Darbhanga", "Motihari", "Sasaram", "Arrah"],
-    "Maharashtra": ["Mumbai", "Pune", "Nagpur"],
-    "Uttar Pradesh": ["Lucknow", "Kanpur", "Varanasi"],
-    "Delhi": ["New Delhi"],
-    "Karnataka": ["Bengaluru", "Mysuru"]
+  "Andaman and Nicobar Islands": ["Port Blair"],
+  "Maharashtra": ["Mumbai", "Pune", "Nagpur", "Thane", "Nashik", "Kalyan-Dombivali", "Vasai-Virar", "Solapur", "Mira-Bhayandar", "Bhiwandi", "Amravati", "Nanded-Waghala", "Sangli", "Malegaon", "Akola", "Latur", "Dhule", "Ahmednagar", "Ichalkaranji", "Parbhani", "Panvel", "Yavatmal", "Achalpur", "Osmanabad", "Nandurbar", "Satara", "Wardha", "Udgir", "Aurangabad", "Amalner", "Akot", "Pandharpur", "Shrirampur", "Parli", "Washim", "Ambejogai", "Manmad", "Ratnagiri", "Uran Islampur", "Pusad", "Sangamner", "Shirpur-Warwade", "Malkapur", "Wani", "Lonavla", "Talegaon Dabhade", "Anjangaon", "Umred", "Palghar", "Shegaon", "Ozar", "Phaltan", "Yevla", "Shahade", "Vita", "Umarkhed", "Warora", "Pachora", "Tumsar", "Manjlegaon", "Sillod", "Arvi", "Nandura", "Vaijapur", "Wadgaon Road", "Sailu", "Murtijapur", "Tasgaon", "Mehkar", "Yawal", "Pulgaon", "Nilanga", "Wai", "Umarga", "Paithan", "Rahuri", "Nawapur", "Tuljapur", "Morshi", "Purna", "Satana", "Pathri", "Sinnar", "Uchgaon", "Uran", "Pen", "Karjat", "Manwath", "Partur", "Sangole", "Mangrulpir", "Risod", "Shirur", "Savner", "Sasvad", "Pandharkaoda", "Talode", "Shrigonda", "Shirdi", "Raver", "Mukhed", "Rajura", "Vadgaon Kasba", "Tirora", "Mahad", "Lonar", "Sawantwadi", "Pathardi", "Pauni", "Ramtek", "Mul", "Soyagaon", "Mangalvedhe", "Narkhed", "Shendurjana", "Patur", "Mhaswad", "Loha", "Nandgaon", "Warud"],
+"Delhi": ["Delhi", "New Delhi"],
+"Karnataka": ["Bengaluru", "Hubli-Dharwad", "Belagavi", "Mangaluru", "Davanagere", "Ballari", "Tumkur", "Shivamogga", "Raayachuru", "Robertson Pet", "Kolar", "Mandya", "Udupi", "Chikkamagaluru", "Karwar", "Ranebennuru", "Ranibennur", "Ramanagaram", "Gokak", "Yadgir", "Rabkavi Banhatti", "Shahabad", "Sirsi", "Sindhnur", "Tiptur", "Arsikere", "Nanjangud", "Sagara", "Sira", "Puttur", "Athni", "Mulbagal", "Surapura", "Siruguppa", "Mudhol", "Sidlaghatta", "Shahpur", "Saundatti-Yellamma", "Wadi", "Manvi", "Nelamangala", "Lakshmeshwar", "Ramdurg", "Nargund", "Tarikere", "Malavalli", "Savanur", "Lingsugur", "Vijayapura", "Sankeshwara", "Madikeri", "Talikota", "Sedam", "Shikaripur", "Mahalingapura", "Mudalagi", "Muddebihal", "Pavagada", "Malur", "Sindhagi", "Sanduru", "Afzalpur", "Maddur", "Madhugiri", "Tekkalakote", "Terdal", "Mudabidri", "Magadi", "Navalgund", "Shiggaon", "Shrirangapattana", "Sindagi", "Sakaleshapura", "Srinivaspur", "Ron", "Mundargi", "Sadalagi", "Piriyapatna", "Adyar"],
+"Gujarat": ["Ahmedabad", "Surat", "Vadodara", "Rajkot", "Bhavnagar", "Jamnagar", "Nadiad", "Porbandar", "Anand", "Morvi", "Mahesana", "Bharuch", "Vapi", "Navsari", "Veraval", "Bhuj", "Godhra", "Palanpur", "Valsad", "Patan", "Deesa", "Amreli", "Anjar", "Dhoraji", "Khambhat", "Mahuva", "Keshod", "Wadhwan", "Ankleshwar", "Savarkundla", "Kadi", "Visnagar", "Upleta", "Una", "Sidhpur", "Unjha", "Mangrol", "Viramgam", "Modasa", "Palitana", "Petlad", "Kapadvanj", "Sihor", "Wankaner", "Limbdi", "Mandvi", "Thangadh", "Vyara", "Padra", "Lunawada", "Rajpipla", "Vapi", "Umreth", "Sanand", "Rajula", "Radhanpur", "Mahemdabad", "Ranavav", "Tharad", "Mansa", "Umbergaon", "Talaja", "Vadnagar", "Manavadar", "Salaya", "Vijapur", "Pardi", "Rapar", "Songadh", "Lathi", "Adalaj", "Chhapra"],
+"Telangana": ["Hyderabad", "Warangal", "Nizamabad", "Karimnagar", "Ramagundam", "Khammam", "Mahbubnagar", "Mancherial", "Adilabad", "Suryapet", "Jagtial", "Miryalaguda", "Nirmal", "Kamareddy", "Kothagudem", "Bodhan", "Palwancha", "Mandamarri", "Koratla", "Sircilla", "Tandur", "Siddipet", "Wanaparthy", "Kagaznagar", "Gadwal", "Sangareddy", "Bellampalle", "Bhongir", "Vikarabad", "Jangaon", "Bhadrachalam", "Bhainsa", "Farooqnagar", "Medak", "Narayanpet", "Sadasivpet", "Yellandu", "Manuguru", "Kyathampalle", "Nagarkurnool"],
+"Tamil Nadu": ["Chennai", "Coimbatore", "Madurai", "Tiruchirappalli", "Salem", "Tirunelveli", "Tiruppur", "Ranipet", "Nagercoil", "Thanjavur", "Vellore", "Kancheepuram", "Erode", "Tiruvannamalai", "Pollachi", "Rajapalayam", "Sivakasi", "Pudukkottai", "Neyveli (TS)", "Nagapattinam", "Viluppuram", "Tiruchengode", "Vaniyambadi", "Theni Allinagaram", "Udhagamandalam", "Aruppukkottai", "Paramakudi", "Arakkonam", "Virudhachalam", "Srivilliputhur", "Tindivanam", "Virudhunagar", "Karur", "Valparai", "Sankarankovil", "Tenkasi", "Palani", "Pattukkottai", "Tirupathur", "Ramanathapuram", "Udumalaipettai", "Gobichettipalayam", "Thiruvarur", "Thiruvallur", "Panruti", "Namakkal", "Thirumangalam", "Vikramasingapuram", "Nellikuppam", "Rasipuram", "Tiruttani", "Nandivaram-Guduvancheri", "Periyakulam", "Pernampattu", "Vellakoil", "Sivaganga", "Vadalur", "Rameshwaram", "Tiruvethipuram", "Perambalur", "Usilampatti", "Vedaranyam", "Sathyamangalam", "Puliyankudi", "Nanjikottai", "Thuraiyur", "Sirkali", "Tiruchendur", "Periyasemur", "Sattur", "Vandavasi", "Tharamangalam", "Tirukkoyilur", "Oddanchatram", "Palladam", "Vadakkuvalliyur", "Tirukalukundram", "Uthamapalayam", "Surandai", "Sankari", "Shenkottai", "Vadipatti", "Sholingur", "Tirupathur", "Manachanallur", "Viswanatham", "Polur", "Panagudi", "Uthiramerur", "Thiruthuraipoondi", "Pallapatti", "Ponneri", "Lalgudi", "Natham", "Unnamalaikadai", "P.N.Patti", "Tharangambadi", "Tittakudi", "Pacode", "O' Valley", "Suriyampalayam", "Sholavandan", "Thammampatti", "Namagiripettai", "Peravurani", "Parangipettai", "Pudupattinam", "Pallikonda", "Sivagiri", "Punjaipugalur", "Padmanabhapuram", "Thirupuvanam"],
+"West Bengal": ["Kolkata", "Siliguri", "Asansol", "Raghunathganj", "Kharagpur", "Naihati", "English Bazar", "Baharampur", "Hugli-Chinsurah", "Raiganj", "Jalpaiguri", "Santipur", "Balurghat", "Medinipur", "Habra", "Ranaghat", "Bankura", "Nabadwip", "Darjiling", "Purulia", "Arambagh", "Tamluk", "AlipurdUrban Agglomerationr", "Suri", "Jhargram", "Gangarampur", "Rampurhat", "Kalimpong", "Sainthia", "Taki", "Murshidabad", "Memari", "Paschim Punropara", "Tarakeswar", "Sonamukhi", "PandUrban Agglomeration", "Mainaguri", "Malda", "Panchla", "Raghunathpur", "Mathabhanga", "Monoharpur", "Srirampore", "Adra"],
+"Rajasthan": ["Jaipur", "Jodhpur", "Bikaner", "Udaipur", "Ajmer", "Bhilwara", "Alwar", "Bharatpur", "Pali", "Barmer", "Sikar", "Tonk", "Sadulpur", "Sawai Madhopur", "Nagaur", "Makrana", "Sujangarh", "Sardarshahar", "Ladnu", "Ratangarh", "Nokha", "Nimbahera", "Suratgarh", "Rajsamand", "Lachhmangarh", "Rajgarh (Churu)", "Nasirabad", "Nohar", "Phalodi", "Nathdwara", "Pilani", "Merta City", "Sojat", "Neem-Ka-Thana", "Sirohi", "Pratapgarh", "Rawatbhata", "Sangaria", "Lalsot", "Pilibanga", "Pipar City", "Taranagar", "Vijainagar, Ajmer", "Sumerpur", "Sagwara", "Ramganj Mandi", "Lakheri", "Udaipurwati", "Losal", "Sri Madhopur", "Ramngarh", "Rawatsar", "Rajakhera", "Shahpura", "Shahpura", "Raisinghnagar", "Malpura", "Nadbai", "Sanchore", "Nagar", "Rajgarh (Alwar)", "Sheoganj", "Sadri", "Todaraisingh", "Todabhim", "Reengus", "Rajaldesar", "Sadulshahar", "Sambhar", "Prantij", "Mount Abu", "Mangrol", "Phulera", "Mandawa", "Pindwara", "Mandalgarh", "Takhatgarh"],
+"Uttar Pradesh": ["Lucknow", "Kanpur", "Firozabad", "Agra", "Meerut", "Varanasi", "Allahabad", "Amroha", "Moradabad", "Aligarh", "Saharanpur", "Noida", "Loni", "Jhansi", "Shahjahanpur", "Rampur", "Modinagar", "Hapur", "Etawah", "Sambhal", "Orai", "Bahraich", "Unnao", "Rae Bareli", "Lakhimpur", "Sitapur", "Lalitpur", "Pilibhit", "Chandausi", "Hardoi", "Azamgarh", "Khair", "Sultanpur", "Tanda", "Nagina", "Shamli", "Najibabad", "Shikohabad", "Sikandrabad", "Shahabad, Hardoi", "Pilkhuwa", "Renukoot", "Vrindavan", "Ujhani", "Laharpur", "Tilhar", "Sahaswan", "Rath", "Sherkot", "Kalpi", "Tundla", "Sandila", "Nanpara", "Sardhana", "Nehtaur", "Seohara", "Padrauna", "Mathura", "Thakurdwara", "Nawabganj", "Siana", "Noorpur", "Sikandra Rao", "Puranpur", "Rudauli", "Thana Bhawan", "Palia Kalan", "Zaidpur", "Nautanwa", "Zamania", "Shikarpur, Bulandshahr", "Naugawan Sadat", "Fatehpur Sikri", "Shahabad, Rampur", "Robertsganj", "Utraula", "Sadabad", "Rasra", "Lar", "Lal Gopalganj Nindaura", "Sirsaganj", "Pihani", "Shamsabad, Agra", "Rudrapur", "Soron", "SUrban Agglomerationr", "Samdhan", "Sahjanwa", "Rampur Maniharan", "Sumerpur", "Shahganj", "Tulsipur", "Tirwaganj", "PurqUrban Agglomerationzi", "Shamsabad, Farrukhabad", "Warhapur", "Powayan", "Sandi", "Achhnera", "Naraura", "Nakur", "Sahaspur", "Safipur", "Reoti", "Sikanderpur", "Saidpur", "Sirsi", "Purwa", "Parasi", "Lalganj", "Phulpur", "Shishgarh", "Sahawar", "Samthar", "Pukhrayan", "Obra", "Niwai"],
+"Bihar": ["Patna", "Gaya", "Bhagalpur", "Muzaffarpur", "Darbhanga", "Arrah", "Begusarai", "Chhapra", "Katihar", "Munger", "Purnia", "Saharsa", "Sasaram", "Hajipur", "Dehri-on-Sone", "Bettiah", "Motihari", "Bagaha", "Siwan", "Kishanganj", "Jamalpur", "Buxar", "Jehanabad", "Aurangabad", "Lakhisarai", "Nawada", "Jamui", "Sitamarhi", "Araria", "Gopalganj", "Madhubani", "Masaurhi", "Samastipur", "Mokameh", "Supaul", "Dumraon", "Arwal", "Forbesganj", "BhabUrban Agglomeration", "Narkatiaganj", "Naugachhia", "Madhepura", "Sheikhpura", "Sultanganj", "Raxaul Bazar", "Ramnagar", "Mahnar Bazar", "Warisaliganj", "Revelganj", "Rajgir", "Sonepur", "Sherghati", "Sugauli", "Makhdumpur", "Maner", "Rosera", "Nokha", "Piro", "Rafiganj", "Marhaura", "Mirganj", "Lalganj", "Murliganj", "Motipur", "Manihari", "Sheohar", "Maharajganj", "Silao", "Barh", "Asarganj"],
+"Madhya Pradesh": ["Indore", "Bhopal", "Jabalpur", "Gwalior", "Ujjain", "Sagar", "Ratlam", "Satna", "Murwara (Katni)", "Morena", "Singrauli", "Rewa", "Vidisha", "Ganjbasoda", "Shivpuri", "Mandsaur", "Neemuch", "Nagda", "Itarsi", "Sarni", "Sehore", "Mhow Cantonment", "Seoni", "Balaghat", "Ashok Nagar", "Tikamgarh", "Shahdol", "Pithampur", "Alirajpur", "Mandla", "Sheopur", "Shajapur", "Panna", "Raghogarh-Vijaypur", "Sendhwa", "Sidhi", "Pipariya", "Shujalpur", "Sironj", "Pandhurna", "Nowgong", "Mandideep", "Sihora", "Raisen", "Lahar", "Maihar", "Sanawad", "Sabalgarh", "Umaria", "Porsa", "Narsinghgarh", "Malaj Khand", "Sarangpur", "Mundi", "Nepanagar", "Pasan", "Mahidpur", "Seoni-Malwa", "Rehli", "Manawar", "Rahatgarh", "Panagar", "Wara Seoni", "Tarana", "Sausar", "Rajgarh", "Niwari", "Mauganj", "Manasa", "Nainpur", "Prithvipur", "Sohagpur", "Nowrozabad (Khodargama)", "Shamgarh", "Maharajpur", "Multai", "Pali", "Pachore", "Rau", "Mhowgaon", "Vijaypur", "Narsinghgarh"],
+"Andhra Pradesh": ["Visakhapatnam", "Vijayawada", "Guntur", "Nellore", "Kurnool", "Rajahmundry", "Kakinada", "Tirupati", "Anantapur", "Kadapa", "Vizianagaram", "Eluru", "Ongole", "Nandyal", "Machilipatnam", "Adoni", "Tenali", "Chittoor", "Hindupur", "Proddatur", "Bhimavaram", "Madanapalle", "Guntakal", "Dharmavaram", "Gudivada", "Srikakulam", "Narasaraopet", "Rajampet", "Tadpatri", "Tadepalligudem", "Chilakaluripet", "Yemmiganur", "Kadiri", "Chirala", "Anakapalle", "Kavali", "Palacole", "Sullurpeta", "Tanuku", "Rayachoti", "Srikalahasti", "Bapatla", "Naidupet", "Nagari", "Gudur", "Vinukonda", "Narasapuram", "Nuzvid", "Markapur", "Ponnur", "Kandukur", "Bobbili", "Rayadurg", "Samalkot", "Jaggaiahpet", "Tuni", "Amalapuram", "Bheemunipatnam", "Venkatagiri", "Sattenapalle", "Pithapuram", "Palasa Kasibugga", "Parvathipuram", "Macherla", "Gooty", "Salur", "Mandapeta", "Jammalamadugu", "Peddapuram", "Punganur", "Nidadavole", "Repalle", "Ramachandrapuram", "Kovvur", "Tiruvuru", "Uravakonda", "Narsipatnam", "Yerraguntla", "Pedana", "Puttur", "Renigunta", "Rajam", "Srisailam Project (Right Flank Colony) Township"],
+"Punjab": ["Ludhiana", "Patiala", "Amritsar", "Jalandhar", "Bathinda", "Pathankot", "Hoshiarpur", "Batala", "Moga", "Malerkotla", "Khanna", "Mohali", "Barnala", "Firozpur", "Phagwara", "Kapurthala", "Zirakpur", "Kot Kapura", "Faridkot", "Muktsar", "Rajpura", "Sangrur", "Fazilka", "Gurdaspur", "Kharar", "Gobindgarh", "Mansa", "Malout", "Nabha", "Tarn Taran", "Jagraon", "Sunam", "Dhuri", "Firozpur Cantt.", "Sirhind Fatehgarh Sahib", "Rupnagar", "Jalandhar Cantt.", "Samana", "Nawanshahr", "Rampura Phul", "Nangal", "Nakodar", "Zira", "Patti", "Raikot", "Longowal", "Urmar Tanda", "Morinda, India", "Phillaur", "Pattran", "Qadian", "Sujanpur", "Mukerian", "Talwara"],
+"Haryana": ["Faridabad", "Gurgaon", "Hisar", "Rohtak", "Panipat", "Karnal", "Sonipat", "Yamunanagar", "Panchkula", "Bhiwani", "Bahadurgarh", "Jind", "Sirsa", "Thanesar", "Kaithal", "Palwal", "Rewari", "Hansi", "Narnaul", "Fatehabad", "Gohana", "Tohana", "Narwana", "Mandi Dabwali", "Charkhi Dadri", "Shahbad", "Pehowa", "Samalkha", "Pinjore", "Ladwa", "Sohna", "Safidon", "Taraori", "Mahendragarh", "Ratia", "Rania", "Sarsod"],
+"Jammu and Kashmir": ["Srinagar", "Jammu", "Baramula", "Anantnag", "Sopore", "KathUrban Agglomeration", "Rajauri", "Punch", "Udhampur"],
+"Jharkhand": ["Dhanbad", "Ranchi", "Jamshedpur", "Bokaro Steel City", "Deoghar", "Phusro", "Adityapur", "Hazaribag", "Giridih", "Ramgarh", "Jhumri Tilaiya", "Saunda", "Sahibganj", "Medininagar (Daltonganj)", "Chaibasa", "Chatra", "Gumia", "Dumka", "Madhupur", "Chirkunda", "Pakaur", "Simdega", "Musabani", "Mihijam", "Patratu", "Lohardaga", "Tenu dam-cum-Kathhara"],
+"Chhattisgarh": ["Raipur", "Bhilai Nagar", "Korba", "Bilaspur", "Durg", "Rajnandgaon", "Jagdalpur", "Raigarh", "Ambikapur", "Mahasamund", "Dhamtari", "Chirmiri", "Bhatapara", "Dalli-Rajhara", "Naila Janjgir", "Tilda Newra", "Mungeli", "Manendragarh", "Sakti"],
+"Assam": ["Guwahati", "Silchar", "Dibrugarh", "Nagaon", "Tinsukia", "Jorhat", "Bongaigaon City", "Dhubri", "Diphu", "North Lakhimpur", "Tezpur", "Karimganj", "Sibsagar", "Goalpara", "Barpeta", "Lanka", "Lumding", "Mankachar", "Nalbari", "Rangia", "Margherita", "Mangaldoi", "Silapathar", "Mariani", "Marigaon"],
+"Chandigarh": ["Chandigarh"],
+"Odisha": ["Bhubaneswar", "Cuttack", "Raurkela", "Brahmapur", "Sambalpur", "Puri", "Baleshwar Town", "Baripada Town", "Bhadrak", "Balangir", "Jharsuguda", "Bargarh", "Paradip", "Bhawanipatna", "Dhenkanal", "Barbil", "Kendujhar", "Sunabeda", "Rayagada", "Jatani", "Byasanagar", "Kendrapara", "Rajagangapur", "Parlakhemundi", "Talcher", "Sundargarh", "Phulabani", "Pattamundai", "Titlagarh", "Nabarangapur", "Soro", "Malkangiri", "Rairangpur", "Tarbha"],
+"Kerala": ["Thiruvananthapuram", "Kochi", "Kozhikode", "Kollam", "Thrissur", "Palakkad", "Alappuzha", "Malappuram", "Ponnani", "Vatakara", "Kanhangad", "Taliparamba", "Koyilandy", "Neyyattinkara", "Kayamkulam", "Nedumangad", "Kannur", "Tirur", "Kottayam", "Kasaragod", "Kunnamkulam", "Ottappalam", "Thiruvalla", "Thodupuzha", "Chalakudy", "Changanassery", "Punalur", "Nilambur", "Cherthala", "Perinthalmanna", "Mattannur", "Shoranur", "Varkala", "Paravoor", "Pathanamthitta", "Peringathur", "Attingal", "Kodungallur", "Pappinisseri", "Chittur-Thathamangalam", "Muvattupuzha", "Adoor", "Mavelikkara", "Mavoor", "Perumbavoor", "Vaikom", "Palai", "Panniyannur", "Guruvayoor", "Puthuppally", "Panamattom"],
+"Uttarakhand": ["Dehradun", "Hardwar", "Haldwani-cum-Kathgodam", "Srinagar", "Kashipur", "Roorkee", "Rudrapur", "Rishikesh", "Ramnagar", "Pithoragarh", "Manglaur", "Nainital", "Mussoorie", "Tehri", "Pauri", "Nagla", "Sitarganj", "Bageshwar"],
+"Puducherry": ["Pondicherry", "Karaikal", "Yanam", "Mahe"],
+"Tripura": ["Agartala", "Udaipur", "Dharmanagar", "Pratapgarh", "Kailasahar", "Belonia", "Khowai"],
+"Karnatka": ["Mysore"],
+"Mizoram": ["Aizawl", "Lunglei", "Saiha"],
+"Meghalaya": ["Shillong", "Tura", "Nongstoin"],
+"Manipur": ["Imphal", "Thoubal", "Lilong", "Mayang Imphal"],
+"Himachal Pradesh": ["Shimla", "Mandi", "Solan", "Nahan", "Sundarnagar", "Palampur"],
+"Nagaland": ["Dimapur", "Kohima", "Zunheboto", "Tuensang", "Wokha", "Mokokchung"],
+"Goa": ["Marmagao", "Panaji", "Margao", "Mapusa"],
+"Arunachal Pradesh": ["Naharlagun", "Pasighat"],
+"Dadra and Nagar Haveli": ["Silvassa"],
   };
 
   const togglePassword = () => {
     setShowPassword(prev => !prev);
   };
 
-  const handlePhoneInput = (e) => {
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validatePhone = (phone) => {
+    return phone.length === 10 && /^\d{10}$/.test(phone);
+  };
+
+  const validatePassword = (password) => {
+    const hasLetter = /[a-zA-Z]/.test(password);
+    const hasNumber = /\d/.test(password);
+    const hasSpecial = /[@&*]/.test(password);
+    const isLongEnough = password.length >= 8;
+    
+    return hasLetter && hasNumber && hasSpecial && isLongEnough;
+  };
+
+  const handleEmailChange = (e) => {
+    const value = e.target.value;
+    setEmail(value);
+    
+    if (value && !validateEmail(value)) {
+      setEmailError('Please enter a valid email address');
+    } else {
+      setEmailError('');
+    }
+  };
+
+  const handlePhoneChange = (e) => {
     const value = e.target.value.replace(/\D/g, '');
     if (value.length <= 10) {
       setPhone(value);
+      
+      if (value && !validatePhone(value)) {
+        setPhoneError('Phone number must be exactly 10 digits');
+      } else {
+        setPhoneError('');
+      }
+    }
+  };
+
+  const handlePasswordChange = (e) => {
+    const value = e.target.value;
+    setPassword(value);
+    
+    if (value && !validatePassword(value)) {
+      setPasswordError('Password must be 8+ characters with letters, numbers, and special characters (@, &, *)');
+    } else {
+      setPasswordError('');
     }
   };
 
@@ -1180,38 +807,55 @@ const Register = () => {
       return;
     }
 
+    // Validate email
+    if (!validateEmail(email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
+
+    // Validate phone
+    if (!validatePhone(phone)) {
+      alert("Phone number must be exactly 10 digits.");
+      return;
+    }
+
+    // Validate password
+    if (!validatePassword(password)) {
+      alert("Password must be at least 8 characters long and contain letters, numbers, and special characters (@, &, *).");
+      return;
+    }
+
     setIsLoading(true);
 
     try {
-      // Create form data
-      const formData = new FormData();
-      formData.append('type', 'register');
-      formData.append('name', username);
-      formData.append('email', email);
-      formData.append('phone', phone);
-      formData.append('dob', dob);
-      formData.append('state', state);
-      formData.append('city', city);
-      formData.append('password', password);
-
-      const response = await fetch("https://script.google.com/macros/s/AKfycbxokyMXKzm9p6qEhlws-3WBwBb0ah31kkZPZ-0jWIpDH1pUOjKXWExndMoVrtmXriyW/exec", {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbwW9724x20VwFB1qHBBg362B5jjZn7hNW4ZbZmIE3kZrmYJY29i6ZI-R2P0X613l_Z8/exec", {
         method: "POST",
-        mode: 'no-cors', // This handles CORS
-        body: formData
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams({
+          type: "register",
+          name: username,
+          email: email,
+          phone,
+          dob,
+          state,
+          city,
+          password,
+        }),
       });
 
-      // Since we're using no-cors, we can't read the response
-      // We'll assume success and let the server handle duplicate checking
-      // The server should return appropriate responses
+      const result = await response.text();
       
-      // For no-cors mode, we need to handle this differently
-      // You might want to add a setTimeout to simulate response time
-      setTimeout(() => {
-        alert("Registration request submitted! If the email is already registered, you'll be redirected to login.");
-        // You might want to redirect based on server logic or handle it differently
+      if (result === "Success") {
+        alert("Registration successful!");
         navigate("/login");
-      }, 2000);
-
+      } else if (result.includes("Email already registered")) {
+        alert("You are already registered! Please login.");
+        navigate("/login");
+      } else {
+        alert("Registration failed: " + result);
+      }
     } catch (error) {
       console.error("Error:", error);
       alert("Registration error. Please try again.");
@@ -1221,10 +865,10 @@ const Register = () => {
   };
 
   return (
-    <section className="section2">
+    <section className="section">
       <h2>Register</h2>
-      <div className="cards2">
-        <div className="card2">
+      <div className="cards">
+        <div className="card">
           <form onSubmit={handleSubmit}>
             <div>
               <label>Username:</label><br />
@@ -1243,9 +887,11 @@ const Register = () => {
                 type="email" 
                 placeholder="Enter Email" 
                 value={email} 
-                onChange={(e) => setEmail(e.target.value)} 
+                onChange={handleEmailChange} 
                 disabled={isLoading}
+                style={{ borderColor: emailError ? 'red' : '' }}
               />
+              {emailError && <div style={{ color: 'red', fontSize: '12px', marginTop: '5px' }}>{emailError}</div>}
             </div><br />
 
             <div>
@@ -1255,9 +901,11 @@ const Register = () => {
                 maxLength="10" 
                 placeholder="Enter 10-digit Phone Number" 
                 value={phone} 
-                onChange={handlePhoneInput} 
+                onChange={handlePhoneChange} 
                 disabled={isLoading}
+                style={{ borderColor: phoneError ? 'red' : '' }}
               />
+              {phoneError && <div style={{ color: 'red', fontSize: '12px', marginTop: '5px' }}>{phoneError}</div>}
             </div><br />
 
             <div>
@@ -1305,10 +953,11 @@ const Register = () => {
               <label>Password:</label><br />
               <input
                 type={showPassword ? 'text' : 'password'}
-                placeholder="Enter Password"
+                placeholder="Enter Password (8+ chars, letters, numbers, @&*)"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={handlePasswordChange}
                 disabled={isLoading}
+                style={{ borderColor: passwordError ? 'red' : '' }}
               />
               <span
                 onClick={togglePassword}
@@ -1322,6 +971,7 @@ const Register = () => {
               >
                 {showPassword ? '👁️' : '👁️‍🗨️'}
               </span>
+              {passwordError && <div style={{ color: 'red', fontSize: '12px', marginTop: '5px' }}>{passwordError}</div>}
             </div><br />
 
             <button type="submit" disabled={isLoading}>
